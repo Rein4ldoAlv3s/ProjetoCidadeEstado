@@ -14,7 +14,7 @@ public class EnderecoService {
 	@Autowired
 	private EnderecoRepository enderecoRepository;
 	
-	public Endereco listar(Integer id) {
+	public Endereco buscar(Integer id) {
 		Optional<Endereco> obj = enderecoRepository.findById(id);
 		return obj.orElse(null);
 	}

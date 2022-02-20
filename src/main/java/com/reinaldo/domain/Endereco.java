@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Endereco implements Serializable{
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -26,6 +26,7 @@ public class Endereco implements Serializable{
 	private String bairro;
 	private String cep;
 	
+	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name = "cidade_id")
 	private Cidade cidade;
@@ -34,8 +35,7 @@ public class Endereco implements Serializable{
 		super();
 	}
 	
-	public Endereco(Integer id, String logradouro, String numero, String complemento, String bairro, String cep,
-			Cidade cidade) {
+	public Endereco(Integer id, String logradouro, String numero, String complemento, String bairro, String cep, Cidade cidade) {
 		super();
 		this.id = id;
 		this.logradouro = logradouro;
@@ -94,14 +94,6 @@ public class Endereco implements Serializable{
 		this.cep = cep;
 	}
 
-	public Cidade getCidade() {
-		return cidade;
-	}
-
-	public void setCidade(Cidade cidade) {
-		this.cidade = cidade;
-	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -118,7 +110,7 @@ public class Endereco implements Serializable{
 		Endereco other = (Endereco) obj;
 		return Objects.equals(id, other.id);
 	}
-
+	
 	
 	
 }

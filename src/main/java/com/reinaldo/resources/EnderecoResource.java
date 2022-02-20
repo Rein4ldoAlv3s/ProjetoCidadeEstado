@@ -19,7 +19,7 @@ public class EnderecoResource {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> buscar(@PathVariable Integer id){
-		Endereco obj = enderecoService.listar(id);
-		return ResponseEntity.ok().body(obj);
+		Endereco obj = enderecoService.buscar(id);
+		return ResponseEntity.ok(obj);
 	}
 }

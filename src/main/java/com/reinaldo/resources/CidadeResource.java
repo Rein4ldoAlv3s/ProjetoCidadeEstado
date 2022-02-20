@@ -18,8 +18,8 @@ public class CidadeResource {
 	private CidadeService cidadeService;
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Cidade> listar(@PathVariable Integer id) {
+	public ResponseEntity<?> buscar(@PathVariable Integer id){
 		Cidade obj = cidadeService.buscar(id);
-		return ResponseEntity.ok().body(obj);
+		return ResponseEntity.ok(obj);
 	}
 }

@@ -3,7 +3,6 @@ package com.reinaldo.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.reinaldo.domain.Cidade;
@@ -15,7 +14,7 @@ public class CidadeService {
 	@Autowired
 	private CidadeRepository cidadeRepository;
 	
-	public Cidade buscar(Integer id){
+	public Cidade buscar(Integer id) {
 		Optional<Cidade> obj = cidadeRepository.findById(id);
 		return obj.orElse(null);
 	}

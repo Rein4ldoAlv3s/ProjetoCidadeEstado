@@ -1,7 +1,5 @@
 package com.reinaldo;
 
-import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -24,21 +22,21 @@ public class ProjetoCidadeEstadoApplication implements CommandLineRunner{
 	@Autowired
 	private EnderecoRepository enderecoRepository;
 	
-	
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoCidadeEstadoApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		Estado e1 = new Estado(null, "Goiás");
-		Cidade c1 = new Cidade(null, "Goiânia", e1);
-		Cidade c2 = new Cidade(null, "Pirenópolis", e1);
+		Estado est1 = new Estado(null, "Goiás");
+		Cidade cid1 = new Cidade(null, "Goiânia", est1);
 		
-		estadoRepository.saveAll(Arrays.asList(e1));
-		cidadeRepository.saveAll(Arrays.asList(c1, c2));
+		est1.getCidades().add(cid1);
 		
-		Endereco end1 = new Endereco(null, "Av Laranjeiras", "202", "Qd 21P", "Setor dos Funcionarios", "74000000", c1);
+		estadoRepository.save(est1);
+		cidadeRepository.save(cid1);
+		
+		Endereco end1 = new Endereco(null, "Av Papagaios 13", "492", "Qd. 33", "Cerejeiras", "74000000", cid1);
 		
 		enderecoRepository.save(end1);
 	}
